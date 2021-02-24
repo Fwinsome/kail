@@ -1,0 +1,29 @@
+# kail
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	char a[40],b[40];
+	cin.getline(a,30);
+	cin.getline(b,30);
+	int la=strlen(a),lb=strlen(b),x[40]={0},y[40]={0},c[50]={0};
+	for(int i=0;i<la;i++){
+		x[la-1-i]=a[i]-'0';
+	}
+	for(int i=0;i<lb;i++){
+		y[lb-1-i]=b[i]-'0';
+	}
+	for(int i=0;i<la;i++){
+		if(x[i]-y[i]<0){
+			c[i+1]--;
+			c[i]=c[i]+x[i]-y[i]+10;
+		}
+		else{
+			c[i]=c[i]+x[i]-y[i];
+		}
+	}
+	while(c[la]==0) la--;
+	for(int i=la;i>=0;i--){
+		cout<<c[i];
+	}
+	return 0;
+}
