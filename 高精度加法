@@ -1,0 +1,32 @@
+# kail
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	char a[100],b[101];
+	cin.getline(a,30);
+	cin.getline(b,30);
+	int x[101]={0},y[101]={0},c[101]={0},la,lb;
+	la=strlen(a);
+	lb=strlen(b);
+	for(int i=0;i<la;i++){
+		x[la-1-i]=a[i]-'0';
+	}
+	for(int i=0;i<lb;i++){
+		y[lb-1-i]=b[i]-'0';
+	}
+	int l=max(la,lb);
+	for(int i=0;i<l;i++){
+		if(x[i]+y[i]+c[i]>=10){
+			c[i+1]++;
+			c[i]=c[i]+x[i]+y[i]-10;
+		}
+		else{
+			c[i]=c[i]+x[i]+y[i];
+		}
+	}
+	while(c[l]==0) l--;
+	for(int i=l;i>=0;i--){
+		cout<<c[i];
+	}
+	return 0;
+}
